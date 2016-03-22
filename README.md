@@ -10,3 +10,12 @@ You now have a bad user experience and a server flooded with (un necessary) requ
 The Delay tap button will allow the user tap quickly as many times ignoring the tap. and triggering an action only once the user has stopped tapping continuously on the button.
 
 
+# How To
+Just drop a UIButton in storyboard and change the class to ````DelayTapButton````
+
+##### Change the Button class
+![Change class name](https://raw.githubusercontent.com/HexagonalLoop/DelayTapButton/master/Artwork/Demo/Screen%20Shot%202016-03-23%20at%202.16.19%20AM.png)
+
+
+##### Configure the delay time (default is ````0.5````)
+![Change class name](https://raw.githubusercontent.com/HexagonalLoop/DelayTapButton/master/Artwork/Demo/Screen%20Shot%202016-03-23%20at%202.15.55%20AM.png)
