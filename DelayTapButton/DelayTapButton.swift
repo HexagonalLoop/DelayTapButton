@@ -10,9 +10,9 @@ import UIKit
 typealias TouchTouple = (Set<UITouch>, UIEvent?)
 
 
-class DelayTapButton: UIButton {
+@IBDesignable class DelayTapButton: UIButton {
+	
 	private var timer: NSTimer?
-	private var info_ : TouchTouple?
 	
 	@IBInspectable var waitTimeInterval: Float = 0.5
 	
@@ -32,27 +32,23 @@ class DelayTapButton: UIButton {
 	
 	
 	func action(sender: NSTimer){
-		print(sender.userInfo)
-		guard let touple = info_ else{
-			return
-		}
-		super.touchesEnded(touple.0, withEvent: touple.1)
+		self.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
 	}
 	
 	private func cleanUp(){
 		timer?.invalidate()
 		timer = nil
-		info_ = nil
-		
 	}
 	// MARK: - Overriden Methods
 	/* ------------------------------------------------------------ */
 	
 	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		
 		timer?.invalidate()
 		timer = nil
-		self.info_ = (touches, event)
 		timer = NSTimer.scheduledTimerWithTimeInterval(_waitTimeInterval, target: self, selector: "action:", userInfo: nil, repeats: false)
+		
+		self.highlighted = false
 	}
 	
 	override func didMoveToSuperview() {
